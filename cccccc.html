@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cénuel — Accueil</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    #hero {
+      position:relative; z-index:1; min-height:100vh;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      overflow:hidden; padding:2rem;
+    }
+    #stars { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+    .star { position:absolute; border-radius:50%; background:white; animation:twinkle var(--d,3s) ease-in-out infinite alternate; }
+    @keyframes twinkle{from{opacity:.1}to{opacity:.9}}
+    .b1{width:620px;height:620px;background:var(--blue-mid);top:-120px;left:-160px;opacity:.3;}
+    .b2{width:500px;height:500px;background:var(--blue-glow);bottom:-80px;right:-100px;animation-delay:-6s;opacity:.3;}
+    .b3{width:280px;height:280px;background:var(--accent);top:45%;left:50%;transform:translate(-50%,-50%);animation-delay:-3s;opacity:.12;}
+    .hero-inner{position:relative;z-index:2;text-align:center;}
+    .hero-badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:'Syne',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.4rem 1.2rem;border-radius:2rem;margin-bottom:2rem;animation:fadeUp .8s ease both;}
+    .hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.2rem,11vw,7.5rem);line-height:.92;letter-spacing:-.03em;animation:fadeUp .9s .1s ease both;}
+    .hero-title span{display:block;background:linear-gradient(135deg,var(--white-pure) 35%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero-title em{display:block;font-style:normal;color:var(--blue-light);font-size:.52em;font-weight:400;letter-spacing:.06em;-webkit-text-fill-color:var(--blue-light);margin-top:.35em;}
+    .hero-desc{max-width:520px;margin:2rem auto 0;color:var(--muted);line-height:1.75;font-size:1rem;animation:fadeUp 1s .25s ease both;}
+    .hero-cta{margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .4s ease both;}
+    .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--muted);font-size:.68rem;letter-spacing:.2em;animation:fadeUp 1.2s .7s ease both;}
+    .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--accent),transparent);animation:pulse 2s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3.5rem;}
+    .mini-photo-wrap{position:relative;}
+    .mini-photo-wrap::before{content:'';position:absolute;inset:-10px;border:1px solid rgba(0,229,255,.2);border-radius:20px;transform:rotate(3deg);}
+    .mini-photo{width:100%;border-radius:16px;object-fit:cover;aspect-ratio:4/5;display:block;position:relative;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(21,101,192,.3);}
+    .mini-text p{color:var(--muted);line-height:1.85;margin-bottom:1.2rem;}
+    .stats{display:flex;gap:2rem;margin-top:1.8rem;flex-wrap:wrap;}
+    .stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.4rem;color:var(--accent);}
+    .stat-label{color:var(--muted);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;}
+    .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.8rem;margin-top:3.5rem;}
+    .feat-img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .5s;}
+    .card:hover .feat-img{transform:scale(1.06);}
+    .feat-body{padding:1.6rem;}
+    .feat-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.5rem;}
+    .feat-desc{color:var(--muted);font-size:.85rem;line-height:1.65;}
+    .feat-link{display:inline-block;margin-top:1.2rem;color:var(--accent);font-size:.82rem;font-family:'Syne',sans-serif;text-decoration:none;border-bottom:1px solid rgba(0,229,255,.3);transition:border-color .2s;}
+    .feat-link:hover{border-color:var(--accent);}
+    #cta-band{position:relative;z-index:1;background:linear-gradient(135deg,var(--blue-mid),#0d3278);padding:5rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);}
+    #cta-band h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.5rem);margin-bottom:1rem;}
+    #cta-band p{color:var(--blue-light);margin-bottom:2rem;}
+    #cta-band .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    @media(max-width:768px){.mini-grid{grid-template-columns:1fr;gap:2.5rem;}}
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Cén<span>uel</span></a>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="about.html">À propos</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<section id="hero">
+  <div id="stars"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">✦ Disponible pour projets 2025</div>
+    <h1 class="hero-title">
+      <span>Cénuel</span>
+      <em>Ingénieur · Créateur · Innovateur</em>
+    </h1>
+    <p class="hero-desc">Étudiant en Génie Mécanique et Productique à INSTI Lokossa, Bénin. Passionné d'IA, de technologie et de science.</p>
+    <div class="hero-cta">
+      <a href="projets.html" class="btn btn-primary">Voir mes projets →</a>
+      <a href="contact.html" class="btn btn-outline">Me contacter</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>DÉFILER</span><div class="scroll-line"></div></div>
+</section>
+<section class="main" style="background:linear-gradient(180deg,var(--blue-deep) 0%,#071939 100%)">
+  <div class="container">
+    <p class="s-label reveal">Qui suis-je ?</p>
+    <h2 class="s-title reveal">Ingénieur en devenir,<br>créateur par passion</h2>
+    <div class="mini-grid">
+      <div class="mini-photo-wrap reveal">
+        <img class="mini-photo" src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=600&q=80" alt="Portrait"/>
+      </div>
+      <div class="mini-text reveal">
+        <p>Je suis <strong>Cénuel</strong>, étudiant en 1ère année à l'INSTI Lokossa, Bénin. Ma formation en Génie Mécanique et Productique me donne une base solide en conception, fabrication et innovation industrielle.</p>
+        <p>En parallèle, j'explore l'Intelligence Artificielle, le développement web et les outils no-code pour créer des solutions modernes accessibles à tous.</p>
+        <div class="stats">
+          <div><div class="stat-num">1<sup style="font-size:.5em">ère</sup></div><div class="stat-label">Année INSTI</div></div>
+          <div><div class="stat-num">5+</div><div class="stat-label">Outils IA</div></div>
+          <div><div class="stat-num">∞</div><div class="stat-label">Curiosité</div></div>
+        </div>
+        <div style="margin-top:2rem"><a href="about.html" class="btn btn-outline">En savoir plus →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="main" style="background:#071939">
+  <div class="container">
+    <p class="s-label reveal">Projets récents</p>
+    <h2 class="s-title reveal">Mes meilleures réalisations</h2>
+    <div class="feat-grid">
+      <div class="card reveal">
+        <img class="feat-img" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" alt="IA"/>
+        <div class="feat-body"><span class="tag">IA</span><h3 class="feat-title">Assistant IA Personnel</h3><p class="feat-desc">Automatisation de tâches répétitives avec des outils IA modernes.</p><a href="projets.html" class="feat-link">Voir →</a></div>
+      </div>
+      <div class="card reveal">
+        <img class="feat-img" src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?w=600&q=80" alt="Web"/>
+        <div class="feat-body"><span class="tag">Web</span><h3 class="feat-title">Plateforme E-learning</h3><p class="feat-desc">Application web complète déployée sur Vercel.</p><a href="projets.html" class="feat-link">Voir →</a></div>
+      </div>
+      <div class="card reveal">
+        <img class="feat-img" src="https://images.unsplash.com/photo-1581093804475-577d72e38aa0?w=600&q=80" alt="Meca"/>
+        <div class="feat-body"><span class="tag">Mécanique</span><h3 class="feat-title">Conception CAO</h3><p class="feat-desc">Modélisation 3D d'une pièce industrielle à INSTI.</p><a href="projets.html" class="feat-link">Voir →</a></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem" class="reveal"><a href="projets.html" class="btn btn-primary">Tous les projets →</a></div>
+  </div>
+</section>
+<section id="cta-band">
+  <div class="reveal">
+    <h2>Travaillons ensemble !</h2>
+    <p>Un projet, une idée ? Je suis disponible pour collaborer.</p>
+    <div class="btn-row"><a href="contact.html" class="btn btn-primary">Me contacter →</a><a href="competences.html" class="btn btn-outline">Mes compétences</a></div>
+  </div>
+</section>
+<footer><p>© 2025 <strong>Cénuel</strong> — INSTI Lokossa &nbsp;·&nbsp; <a href="contact.html">Contact</a> &nbsp;·&nbsp; ✦</p></footer>
+<script src="main.js"></script>
+<script>
+  const starsEl=document.getElementById('stars');
+  for(let i=0;i<130;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*2.5+.5;s.style.cssText=width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*4+2).toFixed(1)}s;animation-delay:${(Math.random()*5).toFixed(1)}s;;starsEl.appendChild(s);}
+</script>
+</body>
+</html>

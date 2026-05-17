@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cénuel — À propos</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .timeline{position:relative;margin-top:3rem;}
+    .timeline::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+    .tl-item{display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem;}
+    .tl-dot{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--card-bg);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative;z-index:1;}
+    .tl-date{font-family:'Syne',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
+    .tl-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.4rem;}
+    .tl-desc{color:var(--muted);font-size:.9rem;line-height:1.7;}
+    .interests-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;margin-top:3rem;}
+    .interest-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:1.8rem 1.5rem;text-align:center;transition:transform .3s,border-color .3s;}
+    .interest-card:hover{transform:translateY(-5px);border-color:rgba(0,229,255,.3);}
+    .interest-icon{font-size:2.5rem;margin-bottom:1rem;}
+    .interest-name{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.5rem;}
+    .interest-desc{color:var(--muted);font-size:.82rem;line-height:1.5;}
+    .photo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:1rem;margin-top:3.5rem;}
+    .photo-grid img{width:100%;border-radius:14px;object-fit:cover;display:block;border:1px solid var(--card-border);transition:transform .35s;}
+    .photo-grid img:hover{transform:scale(1.03);}
+    .photo-grid img:first-child{grid-row:1/3;height:100%;}
+    .photo-grid img:not(:first-child){height:200px;}
+    .about-flex{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    @media(max-width:768px){.about-flex{grid-template-columns:1fr;}.photo-grid{grid-template-columns:1fr 1fr;}.photo-grid img:first-child{grid-row:auto;height:200px;grid-column:1/3;}}
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Cén<span>uel</span></a>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="about.html">À propos</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+  <p class="page-label">01 — À propos</p>
+  <h1 class="page-title">Mon histoire</h1>
+  <p class="page-sub">Ingénieur en formation, curieux par nature, créateur par passion.</p>
+</div>
+<section class="main" style="background:linear-gradient(180deg,var(--blue-deep) 0%,#071939 100%)">
+  <div class="container">
+    <div class="about-flex">
+      <div class="reveal">
+        <p class="s-label">Ma biographie</p>
+        <h2 class="s-title">Qui est Cénuel ?</h2>
+        <p style="color:var(--muted);line-height:1.85;margin-bottom:1.2rem">Je suis étudiant en <strong>1ère année de Génie Mécanique et Productique</strong> à l'INSTI de Lokossa, au Bénin. Ma formation me prépare à concevoir, fabriquer et optimiser des systèmes industriels.</p>
+        <p style="color:var(--muted);line-height:1.85;margin-bottom:1.2rem">En parallèle, je me passionne pour l'<strong>Intelligence Artificielle</strong>, l'astronomie et la culture science-fiction. J'explore constamment de nouveaux outils — de Bolt.new à Lovable.dev.</p>
+        <p style="color:var(--muted);line-height:1.85">Mon objectif : combiner l'ingénierie traditionnelle et les technologies numériques pour résoudre des problèmes réels en Afrique et dans le monde.</p>
+      </div>
+      <div class="reveal" style="position:relative">
+        <div style="position:absolute;inset:-12px;border:1px solid rgba(0,229,255,.2);border-radius:20px;transform:rotate(2deg)"></div>
+        <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=600&q=80" alt="Cénuel" style="width:100%;border-radius:16px;object-fit:cover;aspect-ratio:4/5;display:block;position:relative;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.5)"/>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="main" style="background:#071939">
+  <div class="container">
+    <p class="s-label reveal">Mon parcours</p>
+    <h2 class="s-title reveal">Étapes clés</h2>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-dot">🎓</div><div class="tl-content"><div class="tl-date">2024 — Présent</div><div class="tl-title">INSTI Lokossa — Génie Mécanique</div><div class="tl-desc">Formation en conception mécanique, CAO, fabrication industrielle et productique.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-dot">🤖</div><div class="tl-content"><div class="tl-date">2023 — Présent</div><div class="tl-title">Exploration de l'Intelligence Artificielle</div><div class="tl-desc">Apprentissage autodidacte des outils IA : prompting, automatisation, no-code avec Bolt.new, v0, Lovable.dev.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-dot">🌐</div><div class="tl-content"><div class="tl-date">2023</div><div class="tl-title">Développement Web & Design</div><div class="tl-desc">Maîtrise du HTML, CSS, JavaScript. Création d'interfaces modernes déployées sur Vercel.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-dot">📡</div><div class="tl-content"><div class="tl-date">2022</div><div class="tl-title">Passion Astronomie & Science-fiction</div><div class="tl-desc">Intérêt profond pour l'astronomie, la physique et l'art science-fiction.</div></div></div>
+    </div>
+  </div>
+</section>
+<section class="main" style="background:linear-gradient(180deg,#071939 0%,var(--blue-deep) 100%)">
+  <div class="container">
+    <p class="s-label reveal">Centres d'intérêt</p>
+    <h2 class="s-title reveal">Ce qui me passionne</h2>
+    <div class="interests-grid">
+      <div class="interest-card reveal"><div class="interest-icon">🤖</div><div class="interest-name">Intelligence Artificielle</div><div class="interest-desc">LLMs, outils génératifs, automatisation et futur de l'IA.</div></div>
+      <div class="interest-card reveal"><div class="interest-icon">🔭</div><div class="interest-name">Astronomie</div><div class="interest-desc">L'univers, les exoplanètes, les trous noirs et la vie extraterrestre.</div></div>
+      <div class="interest-card reveal"><div class="interest-icon">🚀</div><div class="interest-name">Art Sci-Fi</div><div class="interest-desc">L'esthétique futuriste, le space opera et les univers visuels.</div></div>
+      <div class="interest-card reveal"><div class="interest-icon">🌐</div><div class="interest-name">Développement Web</div><div class="interest-desc">Interfaces modernes et applications web avec les derniers outils.</div></div>
+      <div class="interest-card reveal"><div class="interest-icon">⚙️</div><div class="interest-name">Innovation Technique</div><div class="interest-desc">Combiner ingénierie et technologies numériques.</div></div>
+      <div class="interest-card reveal"><div class="interest-icon">📚</div><div class="interest-name">Apprentissage continu</div><div class="interest-desc">Skool, LinkedIn Learning — toujours en train d'apprendre.</div></div>
+    </div>
+  </div>
+</section>
+<section class="main" style="background:var(--blue-deep)">
+  <div class="container">
+    <p class="s-label reveal">Univers visuel</p>
+    <h2 class="s-title reveal">En images</h2>
+    <div class="photo-grid reveal">
+      <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=600&q=80" alt="Espace"/>
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="Tech"/>
+      <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&q=80" alt="Galaxie"/>
+      <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80" alt="Robot"/>
+      <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=400&q=80" alt="Lune"/>
+    </div>
+  </div>
+</section>
+<footer><p>© 2025 <strong>Cénuel</strong> — INSTI Lokossa &nbsp;·&nbsp; <a href="contact.html">Contact</a> &nbsp;·&nbsp; ✦</p></footer>
+<script src="main.js"></script>
+</body>
+</html>

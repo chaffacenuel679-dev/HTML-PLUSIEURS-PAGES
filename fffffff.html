@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cénuel — Compétences</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;margin-top:3rem;}
+    .skill-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.8rem 1.5rem;transition:transform .3s,border-color .3s;position:relative;overflow:hidden;}
+    .skill-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.07),transparent);opacity:0;transition:opacity .3s;}
+    .skill-card:hover{transform:translateY(-6px);border-color:rgba(0,229,255,.35);}
+    .skill-card:hover::before{opacity:1;}
+    .skill-icon{font-size:2.2rem;margin-bottom:1rem;}
+    .skill-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.4rem;}
+    .skill-desc{color:var(--muted);font-size:.8rem;line-height:1.5;}
+    .skill-bar-wrap{height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-top:1rem;}
+    .skill-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue-glow),var(--accent));transform-origin:left;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.16,1,.3,1);}
+    .level-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:3rem;}
+    .level-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+    .level-name{min-width:160px;font-family:'Syne',sans-serif;font-size:.9rem;}
+    .level-track{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;}
+    .level-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue-glow),var(--accent));transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.16,1,.3,1);}
+    .level-pct{min-width:40px;text-align:right;font-size:.8rem;color:var(--accent);font-family:'Syne',sans-serif;}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;margin-top:3rem;}
+    .tool-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:1.4rem 1rem;text-align:center;transition:transform .3s,border-color .3s,background .3s;}
+    .tool-card:hover{transform:translateY(-4px);background:rgba(0,229,255,.07);border-color:rgba(0,229,255,.3);}
+    .tool-icon{font-size:1.8rem;margin-bottom:.6rem;}
+    .tool-name{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;}
+    .tool-type{color:var(--muted);font-size:.72rem;margin-top:.2rem;}
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Cén<span>uel</span></a>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="about.html">À propos</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+  <p class="page-label">04 — Compétences</p>
+  <h1 class="page-title">Ce que je sais faire</h1>
+  <p class="page-sub">Ingénierie, IA, développement web et bien plus encore.</p>
+</div>
+<section class="main" style="background:var(--blue-deep)">
+  <div class="container">
+    <p class="s-label reveal">Domaines</p>
+    <h2 class="s-title reveal">Mes expertises</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="skill-icon">⚙️</div><div class="skill-name">Génie Mécanique</div><div class="skill-desc">Conception, CAO, fabrication, mécanismes et production industrielle.</div><div class="skill-bar-wrap"><div class="skill-bar" style="--w:.80"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🤖</div><div class="skill-name">Intelligence Artificielle</div><div class="skill-desc">Prompting avancé, LLMs, automatisation IA et workflows no-code.</div><div class="skill-bar-wrap"><div class="skill-bar" style="--w:.87"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🌐</div><div class="skill-name">Développement Web</div><div class="skill-desc">HTML, CSS, JavaScript — interfaces modernes et responsives.</div><div class="skill-bar-wrap"><div class="skill-bar" style="--w:.73"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">UI / Design</div><div class="skill-desc">Interfaces visuelles avec Framer, v0 by Vercel, Canva et Figma.</div><div class="skill-bar-wrap"><div class="skill-bar" style="--w:.76"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🚀</div><div class="skill-name">No-Code / Low-Code</div><div class="skill-desc">Bolt.new, Lovable.dev — création d'apps complètes sans code.</div><div class="skill-bar-wrap"><div class="skill-bar" style="--w:.90"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔭</div><div class="skill-name">Culture Scientifique</div><div class="skill-desc">Astronomie, physique, science-fiction — veille permanente.</div><div class="skill-bar-wrap"><div class="skill-bar" style="--w:.88"></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="main" style="background:#071939">
+  <div class="container">
+    <p class="s-label reveal">Niveaux détaillés</p>
+    <h2 class="s-title reveal">Maîtrise par technologie</h2>
+    <div class="level-grid">
+      <div class="reveal">
+        <div class="level-row"><span class="level-name">HTML / CSS</span><div class="level-track"><div class="level-fill" style="--w:.88"></div></div><span class="level-pct">88%</span></div>
+        <div class="level-row"><span class="level-name">JavaScript</span><div class="level-track"><div class="level-fill" style="--w:.70"></div></div><span class="level-pct">70%</span></div>
+        <div class="level-row"><span class="level-name">Prompting IA</span><div class="level-track"><div class="level-fill" style="--w:.92"></div></div><span class="level-pct">92%</span></div>
+        <div class="level-row"><span class="level-name">Bolt.new / Lovable</span><div class="level-track"><div class="level-fill" style="--w:.85"></div></div><span class="level-pct">85%</span></div>
+      </div>
+      <div class="reveal">
+        <div class="level-row"><span class="level-name">Dessin technique</span><div class="level-track"><div class="level-fill" style="--w:.78"></div></div><span class="level-pct">78%</span></div>
+        <div class="level-row"><span class="level-name">CAO (SolidWorks)</span><div class="level-track"><div class="level-fill" style="--w:.72"></div></div><span class="level-pct">72%</span></div>
+        <div class="level-row"><span class="level-name">Canva / Figma</span><div class="level-track"><div class="level-fill" style="--w:.80"></div></div><span class="level-pct">80%</span></div>
+        <div class="level-row"><span class="level-name">Vercel / Déploiement</span><div class="level-track"><div class="level-fill" style="--w:.82"></div></div><span class="level-pct">82%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="main" style="background:linear-gradient(180deg,#071939 0%,var(--blue-deep) 100%)">
+  <div class="container">
+    <p class="s-label reveal">Boîte à outils</p>
+    <h2 class="s-title reveal">Les outils que j'utilise</h2>
+    <div class="tools-grid">
+      <div class="tool-card reveal"><div class="tool-icon">⚡</div><div class="tool-name">Bolt.new</div><div class="tool-type">No-Code</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">🎨</div><div class="tool-name">v0 by Vercel</div><div class="tool-type">Design IA</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">💜</div><div class="tool-name">Lovable.dev</div><div class="tool-type">App Builder</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">▲</div><div class="tool-name">Vercel</div><div class="tool-type">Déploiement</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">🤖</div><div class="tool-name">Claude AI</div><div class="tool-type">IA</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">🐙</div><div class="tool-name">GitHub</div><div class="tool-type">Versioning</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">🖼️</div><div class="tool-name">Canva</div><div class="tool-type">Design</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">📐</div><div class="tool-name">Figma</div><div class="tool-type">UI/UX</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">🔩</div><div class="tool-name">SolidWorks</div><div class="tool-type">CAO</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">💼</div><div class="tool-name">LinkedIn</div><div class="tool-type">Réseau</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">📌</div><div class="tool-name">Pinterest</div><div class="tool-type">Inspiration</div></div>
+      <div class="tool-card reveal"><div class="tool-icon">🏫</div><div class="tool-name">Skool</div><div class="tool-type">Apprentissage</div></div>
+    </div>
+  </div>
+</section>
+<footer><p>© 2025 <strong>Cénuel</strong> — INSTI Lokossa &nbsp;·&nbsp; <a href="contact.html">Contact</a> &nbsp;·&nbsp; ✦</p></footer>
+<script src="main.js"></script>
+<script>
+  const levelIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.level-fill').forEach(f=>{f.style.transform=scaleX(${getComputedStyle(f).getPropertyValue('--w')||.7});});}});},{threshold:.2});
+  document.querySelectorAll('.level-grid > div').forEach(d=>levelIO.observe(d));
+</script>
+</body>
+</html>

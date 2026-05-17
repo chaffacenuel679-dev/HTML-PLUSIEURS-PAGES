@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cénuel — Projets</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .filter-bar{display:flex;gap:.8rem;flex-wrap:wrap;margin:3rem 0 2.5rem;}
+    .filter-btn{padding:.45rem 1.2rem;border-radius:2rem;cursor:none;font-family:'Syne',sans-serif;font-size:.78rem;letter-spacing:.08em;border:1px solid var(--card-border);background:transparent;color:var(--muted);transition:all .25s;}
+    .filter-btn.active,.filter-btn:hover{background:rgba(0,229,255,.12);color:var(--accent);border-color:rgba(0,229,255,.35);}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;}
+    .proj-img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .5s;}
+    .card:hover .proj-img{transform:scale(1.05);}
+    .proj-body{padding:1.8rem;}
+    .proj-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.12rem;margin-bottom:.6rem;}
+    .proj-desc{color:var(--muted);font-size:.86rem;line-height:1.7;}
+    .proj-links{display:flex;gap:1rem;margin-top:1.4rem;}
+    .proj-link{color:var(--accent);font-size:.8rem;text-decoration:none;font-family:'Syne',sans-serif;border-bottom:1px solid rgba(0,229,255,.3);transition:border-color .2s;}
+    .proj-link:hover{border-color:var(--accent);}
+    .tech-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;}
+    .tech-pill{background:rgba(255,255,255,.06);color:var(--blue-light);font-size:.7rem;padding:.2rem .6rem;border-radius:1rem;}
+    .proj-item.hidden{display:none;}
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Cén<span>uel</span></a>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="about.html">À propos</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+  <p class="page-label">03 — Projets</p>
+  <h1 class="page-title">Mes réalisations</h1>
+  <p class="page-sub">Des projets concrets qui combinent ingénierie, IA et développement web.</p>
+</div>
+<section class="main" style="background:var(--blue-deep)">
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="ia">Intelligence Artificielle</button>
+      <button class="filter-btn" data-filter="web">Développement Web</button>
+      <button class="filter-btn" data-filter="meca">Génie Mécanique</button>
+    </div>
+    <div class="projects-grid" id="projGrid">
+      <div class="card reveal proj-item" data-cat="ia">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" alt="IA"/>
+        <div class="proj-body"><span class="tag">Intelligence Artificielle</span><h3 class="proj-title">Assistant IA Personnel</h3><p class="proj-desc">Création d'un assistant IA pour automatiser des tâches répétitives.</p><div class="tech-pills"><span class="tech-pill">Claude AI</span><span class="tech-pill">Bolt.new</span><span class="tech-pill">Vercel</span></div><div class="proj-links"><a href="#" class="proj-link">Voir →</a><a href="#" class="proj-link">GitHub</a></div></div>
+      </div>
+      <div class="card reveal proj-item" data-cat="web">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?w=600&q=80" alt="Web"/>
+        <div class="proj-body"><span class="tag">Développement Web</span><h3 class="proj-title">Plateforme E-learning</h3><p class="proj-desc">Application web complète déployée sur Vercel avec des outils no-code.</p><div class="tech-pills"><span class="tech-pill">HTML/CSS/JS</span><span class="tech-pill">Lovable.dev</span><span class="tech-pill">Vercel</span></div><div class="proj-links"><a href="#" class="proj-link">Voir →</a><a href="#" class="proj-link">Live Demo</a></div></div>
+      </div>
+      <div class="card reveal proj-item" data-cat="meca">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1581093804475-577d72e38aa0?w=600&q=80" alt="Mécanique"/>
+        <div class="proj-body"><span class="tag">Génie Mécanique</span><h3 class="proj-title">Conception CAO</h3><p class="proj-desc">Modélisation 3D d'une pièce industrielle à INSTI Lokossa.</p><div class="tech-pills"><span class="tech-pill">CAO</span><span class="tech-pill">Simulation</span></div><div class="proj-links"><a href="#" class="proj-link">Voir →</a></div></div>
+      </div>
+      <div class="card reveal proj-item" data-cat="web">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=600&q=80" alt="Portfolio"/>
+        <div class="proj-body"><span class="tag">Développement Web</span><h3 class="proj-title">Portfolio Personnel</h3><p class="proj-desc">Ce site multi-pages en HTML, CSS et JavaScript pur avec animations avancées.</p><div class="tech-pills"><span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span></div><div class="proj-links"><a href="index.html" class="proj-link">Voir →</a></div></div>
+      </div>
+      <div class="card reveal proj-item" data-cat="ia">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80" alt="Auto"/>
+        <div class="proj-body"><span class="tag">Intelligence Artificielle</span><h3 class="proj-title">Workflow d'Automatisation</h3><p class="proj-desc">Pipeline IA pour générer du contenu et publier automatiquement.</p><div class="tech-pills"><span class="tech-pill">No-Code</span><span class="tech-pill">IA Générative</span></div><div class="proj-links"><a href="#" class="proj-link">Voir →</a></div></div>
+      </div>
+      <div class="card reveal proj-item" data-cat="meca">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Méca"/>
+        <div class="proj-body"><span class="tag">Génie Mécanique</span><h3 class="proj-title">Étude de Mécanisme</h3><p class="proj-desc">Analyse cinématique et dynamique d'un mécanisme à cames.</p><div class="tech-pills"><span class="tech-pill">Cinématique</span><span class="tech-pill">Dynamique</span></div><div class="proj-links"><a href="#" class="proj-link">Voir →</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer><p>© 2025 <strong>Cénuel</strong> — INSTI Lokossa &nbsp;·&nbsp; <a href="contact.html">Contact</a> &nbsp;·&nbsp; ✦</p></footer>
+<script src="main.js"></script>
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f=btn.dataset.filter;
+      document.querySelectorAll('.proj-item').forEach(item=>{
+        item.classList.toggle('hidden', f!=='all' && item.dataset.cat!==f);
+      });
+    });
+  });
+</script>
+</body>
+</html>
